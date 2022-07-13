@@ -1,0 +1,144 @@
+solution to unaddressed complication i {
+    /*
+    The array has a maximum size correspond-ing to the value of N, the maximum number of values to be averaged over.  Your code needs to ‘wrap around’ back to index 0 of the array without using any logic statements, such as an if statement.  You should be able to do this using a simple mathematical operation, rather than using something that looks like: if (NEW > N) NEW=0… or its equivalent, in any fashion; there is a single math operation that solves this problem for you.
+    */
+    // for returning to the beginning without using an if statement
+    //use modulus
+    array is 10
+    index is 37
+    37 mod 10 = 7
+
+    index is 7
+    7 mod 10 = 7
+
+    index is 3313219
+    3313219 mod 10 = 9
+
+    array is 15
+    index is 15
+    15 mod 15 = 0
+    array is 4
+    0 % 4 = 0
+    1 % 4 = 1
+    2 % 4 = 2
+    3 % 4 = 3
+    4 % 4 = 0
+    5 % 5 = 1
+}
+
+solution to unaddressed complication ii {
+    /*
+    Assume the size of the buffer, N, is fixed at 10 for the purposes of this exercise.  However, the size of the averaging window, n, should be adjustable, i.e. your algorithm should work for any values of n and N, provided n <= N.  You’ll need to prompt the user for this value at the start of the code.  You can assume that the user is well behaved, so it isn’t necessary to check for  the case where n > N.
+    */
+    N = 10 any nunber
+    n = 4 user input less than N
+}
+
+solution to unaddressed complication iii {
+    /*
+    When the program starts up, and before it starts prompting the user to enter numbers to fill the queue, your array has nothing stored in it, except, presumably, 0’s.    How many numbers should you average over if the number of values actually entered—call it VALUES—is less than n?  In this case, you must average over the total number of values entered at that point until VALUES == n, after which you can average over n values each time (the number used for the running total).  Thus for n = 4 and the sequence 1,2,3,4,5,6,7,8, the ‘startup’ output is 1.0, 1.5, 2.0, 2.50, 3.50, 4.50 ,5.50, 6.50
+    */
+    can we use an if statement here
+
+    if (values < n){
+        
+    }
+
+}
+
+actual psudeocode {
+    for calculations with bootstrapped sum and already full array for visualization
+    NArray = {1, 2, 3, 4, 5, 6, 7, 8}
+    n = 3 (size of buffer)
+    old = 0
+    new = old + n
+    sum = 0
+
+    while true{
+        //sum = sum - NArray[old % size of array] + NArray[new % size of array]
+        values ++;
+        new = new + 1
+        old = old + 1
+        
+        if (values < n){
+            sum = sum + NArray[new % n] (the modulus is redundant)
+            average = sum / values % 
+
+        } else { //when the buffer is full
+            sum = sum - NArray[old % n] + NArray[new % n]
+            average = sum / n 
+        }
+    }
+}
+ 
+
+
+actual psudeocode {
+    //declarations, most of these can be on one line
+    //int values = 0; //number of values entered //this number isnt needed
+    int n = 5; //size of averaging window  --- in the actual program this should be changable by the user before the main loop runs
+    int N = 10; //size of array
+    int old = 0; //index of the value to be removed
+    int new = old + n; //index of the value to be added
+    int sum = 0; //sum of values in averaging window
+    int average = 0; //output average
+
+    int array[N] = new int[N] //array
+
+    while true{
+        //get new value  from user
+        array[new % N] = user input
+        
+        if (new < n){ //there are less values than the average window
+            sum = sum + array[new % n] //the modulus is redundant
+            average = average / new //average of current values
+        } else if (new <= n){//new is greater than or equal to the average window
+            sum = sum - array[old % n] + array[new % n] //remove old and add new values
+            average = sum / n //average of full window
+        }
+
+        print outputs
+        increment old and new
+    }
+
+}
+ 
+
+
+
+
+
+actual psudeocode {
+    //declarations, most of these can be on one line
+    //int values = 0; //number of values entered //this number isnt needed
+    int n = 5; //size of averaging window  --- in the actual program this should be changable by the user before the main loop runs
+    int N = 10; //size of array
+    int old = 0; //index of the value to be removed
+    int new = old + n; //index of the value to be added
+    int sum = 0; //sum of values in averaging window
+    int average = 0; //output average
+
+    int array[N] = new int[N] //array
+
+    prompt for n /*the average window size */
+    set n, and new to input and input plus 3
+    while true{
+        //get new value  from user
+        array[new % N] = user input
+        
+        if (new < n){ //there are less values than the average window
+            sum = sum + array[new % n] //the modulus is redundant
+            average = average / new //average of current values
+            increment new
+        } else if (new <= n){//new is greater than or equal to the average window
+            sum = sum - array[old % n] + array[new % n] //remove old and add new values
+            average = sum / n //average of full window
+            increment old and new
+        }
+
+        print output
+    }
+
+}
+
+apparenrly my psudeocode is too codey so im making a flowchart
